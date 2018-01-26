@@ -11,4 +11,4 @@ After just login to vk.com and click extension icon. When wait till download com
 Простое расширение для Google Chrome для скачивания всей коллекции музыки.
 
 Для установки открыть закладку "расширения" в браузере Google Chrome, перетянуть туда файл DVKM.crx.
-После залогинится на vk.com и нажать иконку расширения.
+После залогинится на vk.com и нажать значок расширения.
