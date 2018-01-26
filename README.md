@@ -4,8 +4,8 @@ Simple chrome extension helper for downloading user's whole collection of VK mus
 To install open Google Chrome->extensions tab and drag DVKM.crx file to it. 
 After just login to vk.com and click extension icon. When wait till download complete.
 
-
-
+<br>
+<br>
 
 
 Простое расширение для Google Chrome для скачивания всей коллекции музыки.
