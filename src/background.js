@@ -20,12 +20,6 @@ chrome.extension.onMessage.addListener(function(request, sender, callback){
             };
             songs = request.message;
             startNextDownload();
-//            for (var i = 0; i < songs.length; i++){
-//                  var url = songs[i].url;
-//                  var filename = replaceForbidden(decodeHtml(    songs[currentDownloadIndex].name.trim() + " - " + songs[currentDownloadIndex].title.trim() + ".mp3"    ));
-//                  console.log(filename);
-//                  console.log(filename);
-//              }
       }
    }
 });
@@ -60,6 +54,7 @@ function startNextDownload(){
             };
             wait();
          }else{
+            currentDownloadIndex++;                           ~
             startNextDownload();
          };
    };
@@ -69,11 +64,19 @@ function startNextDownload(){
 function startDownload(id, callBack){
    var url = songs[currentDownloadIndex].url;
    var filename = replaceForbidden(decodeHtml(    songs[currentDownloadIndex].name.trim() + " - " + songs[currentDownloadIndex].title.trim() + ".mp3"    ));
+   console.log("Downloading " + filename + " from url " + url);
+//   var output = "";   
+//   for (var i = 0; i < filename.length; i++){
+//
+//       output = output + " " + filename.charCodeAt(i);
+//   }
+//   console.log(output);
    chrome.downloads.download({url:      url,
-                              filename: filename,
-                              conflictAction: "overwrite"}, function(id){
-                                                               callBack(id);
-                                                            });
+	                      filename: filename,
+	                      conflictAction: "overwrite"}, function(id){
+	                                                       callBack(id);
+	                                                    });
+
 };
 
 function normalizeString(str) {
@@ -90,6 +93,6 @@ function decodeHtml(html) {
 }
 
 function replaceForbidden(str){
-   return str.replace(/[\\/:"*?<>|]/g, " ");
+   return str.replace(/[\\/:"*?<>|]/g, " ").replace(/\0/g, "").replace(String.fromCharCode(0xFEFF), "");
 }
 
